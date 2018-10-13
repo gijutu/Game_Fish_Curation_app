@@ -4,6 +4,8 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    @search = @games.ransack(params[:q])
+    @games = @search.result
   end
 
   def show
