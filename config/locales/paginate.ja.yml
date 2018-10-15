@@ -1,0 +1,16 @@
+ja:
+  views:
+    pagination:
+      first: "せんとう"
+      last: "まつび"
+      previous: "まえ"
+      next: "つぎ"
+      truncate: "..."
+  helpers:
+    page_entries_info:
+      one_page:
+        zero: "<b>でーたなし</b>"
+        one: "<b>1けんちゅう 1〜1 けんをひょうじ</b>"
+        display_entries: '【1〜%{count}件を表示中 / 大会情報は合計%{count}件あります】'
+      more_pages:
+        display_entries: '【%{first}〜%{last}件を表示中 / 大会情報は合計%{total}件あります】'

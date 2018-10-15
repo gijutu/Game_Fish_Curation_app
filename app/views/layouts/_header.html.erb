@@ -1,0 +1,33 @@
+<div id="header">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #44aeea">
+  <a class="navbar-brand" href="#"><%= image_tag 'top_image.png', size: '200x80' %></a>
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse flex-md-column" id="Navber">
+    <ul class="navbar-nav ml-auto small">
+      <%= form_with(model: @game, local: true, method: :get) do |form| %>
+      <%= form.text_field :title, placeholder: '大会名検索...', class: 'form-control'%>
+      <%= form.hidden_field :find, value: 'hit' %>
+      <%= form.submit "大会名検索" ,name: nil, class:'btn btn-outline-dark' %>
+      <% end %>
+    </ul>
+
+    <ul class="navbar-nav ml-auto small">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'ログイン', new_user_session_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'サインアップ', new_user_registration_path, class:'nav-link' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+</div>
