@@ -4,8 +4,14 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
-    @search = @games.ransack(params[:q])
-    @games = @search.result
+    if params['find'] == 'hit'
+      params.delete(:find)
+      @games = @games.search(params[:title])
+      @search = @games.ransack(params[:q])
+    else
+      @search = @games.ransack(params[:q])
+      @games = @search.result
+    end
     @games = @games.page(params[:page])
   end
 

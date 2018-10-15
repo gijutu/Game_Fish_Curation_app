@@ -7,10 +7,12 @@
 
   <div class="collapse navbar-collapse flex-md-column" id="Navber">
     <ul class="navbar-nav ml-auto small">
-      <input type="search" class="form-control mr-sm-2" placeholder="検索..." aria-label="検索...">
-      <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">検索</button>
+      <%= form_with(model: @game, local: true, method: :get) do |form| %>
+      <%= form.text_field :title, placeholder: '大会名検索...', class: 'form-control'%>
+      <%= form.hidden_field :find, value: 'hit' %>
+      <%= form.submit "大会名検索" ,name: nil, class:'btn btn-outline-dark' %>
+      <% end %>
     </ul>
-
 
     <ul class="navbar-nav ml-auto small">
       <% if user_signed_in? %>
