@@ -1,7 +1,17 @@
+<p><strong>カテゴリ</p></strong>
+<div class="container">
+  <% @game.labeling_labels.each do |label| %>
+    <span class="badge badge-primary"><%= label.game_lebel %></span>
+    <span class="badge badge-success"><%= label.game_size %></span>
+    <span class="badge badge-danger"><%= label.game_event %></span>
+  <% end %>
+</div>
+
 <div class="container">
   <p><strong>Title:</strong><%= @game.title %></p>
   <p><strong>Content:</strong><%= @game.content %></p>
 </div>
+
 <div class="container">
   <% unless @game.user_id == current_user.id %>
     <% if @favorite.present? %>
@@ -20,5 +30,9 @@
   <% end %>
 </div>
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+  <%= "#{@favorites}人がお気に入り。"%>
+
+<div class="container">
+  <%= link_to 'Edit', edit_game_path(@game) %> |
+  <%= link_to 'Back', games_path %>
+</div>

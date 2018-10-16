@@ -18,6 +18,8 @@ class GamesController < ApplicationController
   def show
     @favorite = current_user.favorites.find_by(game_id: @game.id)
     @entry = current_user.entries.find_by(game_id: @game.id)
+    @labelings = Labeling.all
+    @labels = Label.all
   end
 
   def new
@@ -25,11 +27,18 @@ class GamesController < ApplicationController
   end
 
   def edit
+    @labelings = Labeling.all
+    @labels = Label.all
   end
 
   def create
     @game = Game.new(game_params)
     if @game.save
+      Label.all.each do |label|
+      if params[:game]["label_#{label.id}"].to_i == 1
+        @labels = Labeling.create!(game_id: @game.id, label_id: label.id)
+      end
+    end
       redirect_to games_path,notice:"大会情報を投稿しました"
     else
       render 'new',notice:"投稿できません"
