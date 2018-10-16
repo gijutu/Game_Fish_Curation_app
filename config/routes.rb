@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'games#index'
-  resources :games
   get 'tops/index'
+
+  devise_for :users
+
+  resources :users, only: %i[show index]
+
+  resources :games
+
+  resources :favorites, only: [:create, :destroy]
+  resources :entries, only: [:create, :destroy]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

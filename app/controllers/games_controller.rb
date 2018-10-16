@@ -16,6 +16,8 @@ class GamesController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(game_id: @game.id)
+    @entry = current_user.entries.find_by(game_id: @game.id)
   end
 
   def new
