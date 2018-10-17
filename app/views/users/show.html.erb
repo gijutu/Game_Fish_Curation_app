@@ -1,0 +1,8 @@
+
+
+
+              <p>名前：<%= @user.name %></p>
+              <p>アドレス：<%= @user.email %></p>
+              <p>お気に<%= @user.favorites.all %></p>
+
+            <%= link_to 'プロフィールを編集', '#', class: 'btn btn-success btn-block mt-3' %>
