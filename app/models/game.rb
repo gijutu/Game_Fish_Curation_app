@@ -15,7 +15,7 @@ class Game < ApplicationRecord
 
   def self.search(search)
     if search.present?
-      Game.where(title: search)
+      Game.where('title LIKE ?', "%#{search}%")
     else
       Game.all
     end

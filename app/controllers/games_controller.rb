@@ -18,7 +18,6 @@ class GamesController < ApplicationController
   def show
     @favorite = current_user.favorites.find_by(game_id: @game.id)
     @entry = current_user.entries.find_by(game_id: @game.id)
-    @labelings = Labeling.all
     @labels = Label.all
   end
 
@@ -27,7 +26,6 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @labelings = Labeling.all
     @labels = Label.all
   end
 
@@ -47,6 +45,11 @@ class GamesController < ApplicationController
 
   def update
     if @game.update(game_params)
+      Label.all.each do |label|
+      if params[:game]["label_#{label.id}"].to_i == 1
+        @labels = Labeling.create!(game_id: @game.id, label_id: label.id)
+      end
+    end
       redirect_to games_path,notice: "へんしゅうしました"
     else
       render 'edit'
