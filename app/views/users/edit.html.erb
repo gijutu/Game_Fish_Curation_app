@@ -1,0 +1,32 @@
+ユーザー編集
+<%= form_with(model: @user, local: true ) do |form| %>
+
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :kana_name %>
+    <%= form.text_field :kana_name %>
+  </div>
+
+  <div>
+    <%= form.label :gender %>
+    <%= form.select :gender, [["男性", "男性"], ["女性", "女性"]] %>
+  </div>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+  <div>
+    <%= form.label :画像 %><%= image_tag (@user.icon.url), size: '40x40' if @user.icon.present? %>
+    <%= form.file_field :icon %>
+    <%= form.hidden_field :icon_cache %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
