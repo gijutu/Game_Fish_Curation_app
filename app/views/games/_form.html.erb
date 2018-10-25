@@ -23,7 +23,12 @@
     <%= form.label :開催日 %>
     <%= form.date_select :the_day %>
   </div>
+  <div class="field">
+    <%= form.label :ファイル %>
+    <%= form.file_field :file %>
+    <!-- <%= form.hidden_field :file_cache %> -->
 
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>
