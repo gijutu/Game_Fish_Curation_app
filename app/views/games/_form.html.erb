@@ -11,12 +11,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :大会名 %>
+    <%= form.label :大会名 %><br>
     <%= form.text_field :title, placeholder: "入力してください"%>
   </div>
 
   <div class="field">
-    <%= form.label :カテゴリ %>
+    <%= form.label :カテゴリ %><br>
   <% Label.all.each do |label| %>
     <%= form.check_box "label_#{label.id}" %>
     <span class="badge badge-primary"><%= label.game_lebel %></span>
@@ -26,7 +26,7 @@
 </div>
 
   <div class="field">
-    <%= form.label :大会レギュレーション %>
+    <%= form.label :大会レギュレーション %><br>
     <%= form.text_area :content, value: game_text, size: "70x10"%>
   </div>
 
@@ -37,26 +37,26 @@
 
   <div class="field">
     <%= form.label :開催場所 %>
-    <%= form.text_field :place, placeholder: "入力してください"%>
+    <%= form.text_field :place, placeholder: "例:霞ヶ浦"%>
   </div>
 
   <div class="field">
     <%= form.label :参加費 %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, placeholder: "例:1000" %>円
   </div>
 
   <div class="field">
-    <%= form.label :備考 %>
+    <%= form.label :備考 %><br>
     <%= form.text_field :remark, size: "70x10" %>
   </div>
 
   <div class="field">
-    <%= form.label :注意事項 %>
+    <%= form.label :注意事項 %><br>
     <%= form.text_field :note, size: "70x10" %>
   </div>
 
   <div class="field">
-    <%= form.label :ファイル %>
+    <%= form.label :ファイル %><br>
     <%= form.file_field :file %>
   </div>
 

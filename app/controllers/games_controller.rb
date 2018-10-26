@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @games = Game.all
+    @games = Game.includes(:labelings)
     if params['find'] == 'hit'
       params.delete(:find)
       @games = @games.search(params[:title])
@@ -12,7 +12,7 @@ class GamesController < ApplicationController
       @search = @games.ransack(params[:q])
       @games = @search.result
     end
-    @games = @games.page(params[:page])
+    @games = @games.page(params[:page]).per(5)
   end
 
   def show
