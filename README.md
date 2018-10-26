@@ -72,3 +72,5 @@ https://docs.google.com/spreadsheets/d/18v5fRwqECKKTPwerFg0a2pxOZowgxzGF1RqXsVcW
 * gem 'devise'
 * gem 'ransack'
 * gem 'kaminari'
+* gem 'mini_magick'
+* gem 'carrierwave'

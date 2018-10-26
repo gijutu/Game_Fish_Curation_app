@@ -13,6 +13,8 @@ class Game < ApplicationRecord
   has_many :open_areas, dependent: :destroy
   has_many :open_area_areas, through: :open_areas, source: :area
 
+  mount_uploader :file, ImageUploader
+
   def self.search(search)
     if search.present?
       Game.where('title LIKE ?', "%#{search}%")

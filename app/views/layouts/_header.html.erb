@@ -16,6 +16,7 @@
 
     <ul class="navbar-nav ml-auto small">
       <% if user_signed_in? %>
+      <%= image_tag (current_user.icon.url), size: '40x40' if current_user.icon.present? %>
         <li class="nav-item">
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-link' %>
         </li>

@@ -12,26 +12,57 @@
 
   <div class="field">
     <%= form.label :大会名 %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: "入力してください"%>
   </div>
 
   <div class="field">
-    <%= form.label :大会詳細 %>
-    <%= form.text_area :content %>
-  </div>
-  <div class="field">
-    <%= form.label :開催日 %>
-    <%= form.date_select :the_day %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
+    <%= form.label :カテゴリ %>
   <% Label.all.each do |label| %>
     <%= form.check_box "label_#{label.id}" %>
     <span class="badge badge-primary"><%= label.game_lebel %></span>
     <span class="badge badge-success"><%= label.game_size %></span>
     <span class="badge badge-danger"><%= label.game_event %></span>
   <% end %>
+</div>
+
+  <div class="field">
+    <%= form.label :大会レギュレーション %>
+    <%= form.text_area :content, value: game_text, size: "70x10"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :開催日 %>
+    <%= form.date_select :the_day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :開催場所 %>
+    <%= form.text_field :place, placeholder: "入力してください"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :参加費 %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :備考 %>
+    <%= form.text_field :remark, size: "70x10" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :注意事項 %>
+    <%= form.text_field :note, size: "70x10" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ファイル %>
+    <%= form.file_field :file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+
 <% end %>

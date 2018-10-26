@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'hello_vue' %>
 <h1>大会情報</h1>
 
 <div class="table-responsive">
@@ -5,6 +6,7 @@
   <table class="table">
     <thead>
       <tr>
+        <!-- <th>カテゴリ</th> -->
         <th><%= sort_link(@search,:created_at,'作成日') %></th>
         <th><%= sort_link(@search,:the_day,'開催日') %></th>
         <th>大会名</th>
@@ -19,6 +21,12 @@
     <tbody>
       <% @games.order("created_at DESC").each do |game| %>
         <tr>
+          <!-- 一覧画面にラベルも表示させたい。 -->
+          <!-- <% Labeling.all.each do |labeling| %>
+          <td><span class="badge badge-primary"><%= labeling.label.game_lebel %></span></td>
+          <td><span class="badge badge-success"><%= labeling.label.game_size %></span></td>
+          <td><span class="badge badge-danger"><%= labeling.label.game_event %></span></td>
+          <% end %> -->
           <td><%= game.created_at.strftime("%Y-%m-%d%H:%M") %></td>
           <td><%= game.the_day %></td>
           <td><%= game.title %></td>

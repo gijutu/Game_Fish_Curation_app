@@ -1,8 +1,14 @@
+<p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Image:</strong>
+  <%= image_tag (@user.icon.url), size: '40x40' if @user.icon.present? %>
+</p>
 
+<p>名前：<%= @user.name %></p>
+<p>かな：<%= @user.kana_name %></p>
+<p>性別：<%= @user.gender %></p>
+<p>アドレス：<%= @user.email %></p>
+<p>お気に<%= @user.favorites.all %></p>
 
-              <p>名前：<%= @user.name %></p>
-              <p>アドレス：<%= @user.email %></p>
-              <p>お気に<%= @user.favorites.all %></p>
-
-            <%= link_to 'プロフィールを編集', '#', class: 'btn btn-success btn-block mt-3' %>
+<%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-success btn-block mt-3' %>
