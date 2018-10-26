@@ -8,7 +8,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'carrierwave'
 gem 'devise'
-gem 'rghost'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari', '~> 0.17.0'
 gem 'mini_magick'
