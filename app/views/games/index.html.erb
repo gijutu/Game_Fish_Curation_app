@@ -6,8 +6,8 @@
   <table class="table">
     <thead>
       <tr>
-        <th>カテゴリ</th>
         <th><%= sort_link(@search,:created_at,'作成日') %></th>
+        <th>カテゴリ</th>
         <th><%= sort_link(@search,:the_day,'開催日') %></th>
         <th>大会名</th>
         <th>詳細を見る</th>
@@ -21,8 +21,8 @@
     <tbody>
       <% @games.order("created_at DESC").each do |game| %>
         <tr>
+          <td><%= game.created_at.strftime("%Y-%m-%d%H:%M") %></td>
           <td>
-            <%= game.created_at.strftime("%Y-%m-%d%H:%M") %>
             <% game.labelings.each do |labeling| %>
               <span class="badge badge-primary"><%= labeling.label.game_lebel %></span>
               <span class="badge badge-success"><%= labeling.label.game_size %></span>
@@ -41,6 +41,3 @@
   </table>
   <%= paginate @games %>
 </div>
-<br>
-
-<%= link_to 'New Game', new_game_path %>

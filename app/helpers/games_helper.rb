@@ -6,4 +6,21 @@ module GamesHelper
       ""
     end
   end
+
+  def label_all
+    Label.all
+  end
+
+
+  def game_size
+     label_all.where.not(game_size: nil)
+  end
+
+  def game_lebel
+     label_all.where.not(game_lebel: nil)
+  end
+
+  def game_event
+     label_all.where.not(game_event: nil)
+  end
 end

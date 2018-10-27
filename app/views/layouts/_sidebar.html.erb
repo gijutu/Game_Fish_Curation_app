@@ -6,12 +6,7 @@
     <ul class="list-unstyled components">
       <p>釣りカラ</p>
       <li><%= link_to 'ホーム', tops_index_path %></li>
-      <li><a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">大会情報</a>
-        <ul class="collapse list-unstyled" id="pageSubmenu">
-          <li><%= link_to '全国大会情報一覧', games_path %></li>
-          <li><%= link_to '都道府県別', games_path %></li>
-        </ul>
-      </li>
+      <li><%= link_to '大会情報一覧', games_path %></li>
       <li><%= link_to '大会を開催する', new_game_path %></li>
       <li><%= link_to 'ボート屋情報', tops_index_path, class:'nav-link disabled' %></li>
     </ul>

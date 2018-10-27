@@ -9,8 +9,9 @@
     <ul class="navbar-nav ml-auto small">
       <%= form_with(model: @game, local: true, method: :get) do |form| %>
       <%= form.text_field :title, placeholder: '大会名検索...', class: 'form-control'%>
+      <%= form.collection_select(:text, Label.setForm, :text, :text, class:'form-control') %>
       <%= form.hidden_field :find, value: 'hit' %>
-      <%= form.submit "大会名検索" ,name: nil, class:'btn btn-outline-dark' %>
+      <%= form.submit "大会検索", name: nil, class:'btn btn-outline-dark' %>
       <% end %>
     </ul>
 
