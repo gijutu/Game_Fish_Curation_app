@@ -9,9 +9,17 @@
 <p>かな：<%= @user.kana_name %></p>
 <p>性別：<%= @user.gender %></p>
 <p>アドレス：<%= @user.email %></p>
+
 <p>お気に入り</p>
 <% current_user.favorite_games.each do |game| %>
 <%= game.title %>
 <%= link_to '大会詳細', game_path(game) %>
 <% end %>
+<br><br>
+<p>エントリー</p>
+<% current_user.entry_games.each do |game| %>
+<%= game.title %>
+<%= link_to '大会詳細', game_path(game) %>
+<% end %>
+
 <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-success btn-block mt-3' %>

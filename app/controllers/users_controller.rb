@@ -4,9 +4,7 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-    @games = Game.all
-  end
+  def show;end
 
   def edit
   end
