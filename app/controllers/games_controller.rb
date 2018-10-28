@@ -23,6 +23,8 @@ class GamesController < ApplicationController
   def show
     @favorite = current_user.favorites.find_by(game_id: @game.id)
     @entry = current_user.entries.find_by(game_id: @game.id)
+    @comments = @game.comments
+    @comment = @game.comments.build
     @labels = Label.all
     @areas = Area.all
   end

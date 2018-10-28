@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :games
 
+  resources :games do
+    resources :comments
+  end
+
   resources :favorites, only: [:create, :destroy]
   resources :entries, only: [:create, :destroy]
 

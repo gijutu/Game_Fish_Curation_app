@@ -13,6 +13,8 @@ class Game < ApplicationRecord
   has_many :open_areas, dependent: :destroy
   has_many :open_area_areas, through: :open_areas, source: :area
 
+  has_many :comments, dependent: :destroy
+
   mount_uploader :file, ImageUploader
 
   def self.search(search)

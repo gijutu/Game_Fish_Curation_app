@@ -47,3 +47,13 @@
   <%= link_to 'Edit', edit_game_path(@game) %>
   <%= link_to 'Back', games_path %>
 </div>
+
+
+<p>コメント一覧</p>
+  <div id="comments_area">
+    <%= render partial: 'comments/index', locals: { comments: @comments, game: @game } %>
+  </div>
+  <%= render partial: 'comments/form', locals: { comment: @comment, game: @game } %>
+  <%= link_to '編集', edit_game_path(@game) %> |
+  <%= link_to '戻る', games_path %>
+</div>
