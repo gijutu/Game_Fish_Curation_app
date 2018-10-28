@@ -16,14 +16,20 @@
   </div>
 
   <div class="field">
+    <%= form.label :開催地域 %>
+    <%= form.collection_select(:area_id, Area.all, :id, :area, class:'form-control') %>
+  </div>
+
+  <div class="field">
     <%= form.label :カテゴリ %><br>
-  <% Label.all.each do |label| %>
-    <%= form.check_box "label_#{label.id}" %>
-    <span class="badge badge-primary"><%= label.game_lebel %></span>
-    <span class="badge badge-success"><%= label.game_size %></span>
-    <span class="badge badge-danger"><%= label.game_event %></span>
-  <% end %>
-</div>
+    <% Label.all.each do |label| %>
+      <%= form.check_box "label_#{label.id}" %>
+      <span class="badge badge-primary"><%= label.game_lebel %></span>
+      <span class="badge badge-success"><%= label.game_size %></span>
+      <span class="badge badge-danger"><%= label.game_event %></span>
+    <% end %>
+  </div>
+
 
   <div class="field">
     <%= form.label :大会レギュレーション %><br>

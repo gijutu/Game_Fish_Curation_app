@@ -8,6 +8,11 @@ class GamesController < ApplicationController
       params.delete(:find)
       @games = @games.search(params[:title])
       @search = @games.ransack(params[:q])
+      # ラベル検索をしたい　できてない
+    elsif params['find'] == 'hit'|| params[:text].present?
+      @q = Game.ransack(params[:q])
+      @labels = Label.all
+      @games = @q.result.includes(:game_lebel)
     else
       @search = @games.ransack(params[:q])
       @games = @search.result
@@ -19,6 +24,7 @@ class GamesController < ApplicationController
     @favorite = current_user.favorites.find_by(game_id: @game.id)
     @entry = current_user.entries.find_by(game_id: @game.id)
     @labels = Label.all
+    @areas = Area.all
   end
 
   def new
@@ -32,6 +38,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
+      @areas = OpenArea.create!(game_id: @game.id, area_id: game_area_id)
       Label.all.each do |label|
       if params[:game]["label_#{label.id}"].to_i == 1
         @labels = Labeling.create!(game_id: @game.id, label_id: label.id)
@@ -73,5 +80,9 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:title, :content, :created_at, :updated_at, :the_day, :file)
+  end
+
+  def game_area_id
+    params.require(:game).permit(:area_id)[:area_id].to_i
   end
 end

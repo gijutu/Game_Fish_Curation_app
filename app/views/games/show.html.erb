@@ -1,4 +1,7 @@
 <strong><%= "最終更新 #{@game.updated_at.strftime("%Y-%m-%d%H:%M")}" %></strong>
+<% @game.open_area_areas.each do |area| %>
+ <%= area.area %>
+ <% end %>
 <div class="container">
   <% @game.labeling_labels.each do |label| %>
     <span class="badge badge-primary"><%= label.game_lebel %></span>
@@ -39,7 +42,6 @@
   <% end %>
 </div>
 
-  <%= "#{@favorites}人がお気に入り。"%>
 
 <div class="container">
   <%= link_to 'Edit', edit_game_path(@game) %>
