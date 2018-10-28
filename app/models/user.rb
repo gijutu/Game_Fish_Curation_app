@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :favorite_games, through: :favorites, source: :game
+  has_many :entries_games, through: :entries, source: :game
 
   has_many :comments, dependent: :destroy
 
