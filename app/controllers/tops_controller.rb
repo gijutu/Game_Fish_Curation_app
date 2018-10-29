@@ -1,3 +1,5 @@
 class TopsController < ApplicationController
-  def home; end
+  def index
+    @games = Game.all
+  end
 end
