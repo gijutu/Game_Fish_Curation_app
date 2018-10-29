@@ -16,12 +16,20 @@
 
     <div class="row">
       <div class="form-group col-md-12">
-        <%= form.label :性別 %>
+        <%= form.label :性別 %><br>
         <%= form.select :gender, [["男性", "男性"], ["女性", "女性"]], class:'form-control' %>
       </div>
       <div class="form-group col-md-12">
-        <%= form.label :メールアドレス %>
+        <%= form.label :メールアドレス %><br>
         <%= form.text_field :email, class:'form-control' %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= form.label :生年月日 %><br>
+        <%= form.date_select :birthday, start_year: 1930, end_year:(Time.now.year - 5), class:'form-control' %>
+      </div>
+      <div class="form-group col-md-12">
+        <%= form.label :住んでいる地域 %><br>
+        <%= form.collection_select(:live, Area.all, :id, :area, class:'form-control') %>
       </div>
     </div>
 

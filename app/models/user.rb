@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :areas
+
   enum gender: {男性:1, 女性:2}
 
   mount_uploader :icon, ImageUploader

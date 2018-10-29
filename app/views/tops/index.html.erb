@@ -1,40 +1,74 @@
-<h2>そんなことより釣りしませんか</h2>
-<div class="row">
-  <div class="col-sm-6 col-md-6">
-    <div class="card">
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"　data-interval="4000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= image_tag("top.JPG",class: "card-img") %>
-          </div>
-          <div class="carousel-item">
-            <%= image_tag("view.jpg",class: "card-img") %>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="card">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"　data-interval="3000">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= image_tag("top.JPG",class: "card-img") %>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag("view.jpg",class: "card-img") %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-sm-6 col-md-3">
-    <div class="card img-thumbnail">
-      <img class="card-img-top" src="..." alt="画像">
-      <div class="card-body px-2 py-3">
-        <h5 class="card-title">タイトル</h5>
-        <p class="card-text">コンテンツ コンテンツ コンテンツ コンテンツ</p>
-        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">ボタン</a> <a href="#" class="btn btn-secondary btn-sm">ボタン</a></p>
+    <div class="col-sm-6 col-md-3">
+      <div class="card img-thumbnail">
+        <%= link_to (image_tag 'turikara-logo.png', size: '100x100'),game_path(@games.last), class:'card-img-top' %>
+        <div class="card-body px-2 py-3">
+          <h3 class="card-title"><%= @games.last.title %></h3>
+          <p class="card-text"><%= @games.last.remark %></p>
+          <p class="mb-0"><%= link_to '&nbsp;詳細'.html_safe, game_path(@games.last), class:'btn btn-primary btn-sm' %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-3">
+      <div class="card img-thumbnail">
+        <%= link_to (image_tag 'turikara-logo.png', size: '100x100'),game_path(@games.first), class:'card-img-top' %>
+        <div class="card-body px-2 py-3">
+          <h3 class="card-title"><%= @games.first.title %></h3>
+          <p class="card-text"><%= @games.first.remark %></p>
+          <p class="mb-0"><%= link_to '&nbsp;詳細'.html_safe, game_path(@games.first), class:'btn btn-primary btn-sm' %></p>
+        </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="col-sm-6 col-md-3">
-    <div class="card img-thumbnail">
-      <img class="card-img-top" src="..." alt="画像">
-      <div class="card-body px-2 py-3">
-        <h5 class="card-title">タイトル</h5>
-        <p class="card-text">コンテンツ コンテンツ コンテンツ コンテンツ</p>
-        <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">ボタン</a> <a href="#" class="btn btn-secondary btn-sm">ボタン</a></p>
+<br>
+
+<div class="container">
+  <div class="card-deck">
+    <div class="card">
+      <%= link_to (image_tag 'watch-logo.png', size: '300x300'),games_path, class:'card-img-top' %>
+      <div class="card-body">
+        <h3 class="card-title">大会情報一覧をみる</h3>
+        <p class="card-text">釣りカラは全国の大会情報を一覧で見ることができます。ユーザー登録をして好きな大会にエントリー、興味のある大会はお気に入りに追加しよう。</p>
+        <%= link_to '&nbsp;大会情報一覧'.html_safe, games_path, class:'btn btn-outline-primary' %>
+      </div>
+    </div>
+
+    <div class="card">
+      <%= link_to (image_tag 'hold-logo.png', size: '300x300'), new_game_path, class:'card-img-top' %>
+      <div class="card-body">
+        <h3 class="card-title">大会を開催する</h3>
+        <p class="card-text">釣りカラは仲間を集めて、釣りの大会を開催することができます。仲間内でも知らない人とでも一緒に大会を楽しもう。</p>
+        <%= link_to '&nbsp;大会を開催'.html_safe, new_game_path, class:'btn btn-outline-primary' %>
+      </div>
+    </div>
+
+    <div class="card">
+      <%= link_to (image_tag 'search-logo.png', size: '300x300'), searchs_index_path, class:'card-img-top' %>
+      <div class="card-body">
+        <h3 class="card-title">大会を検索する</h3>
+        <p class="card-text">釣りカラはあなたとマッチした大会を探すことができます。条件を指定して大会を探そう。</p>
+        <%= link_to '&nbsp;大会を検索'.html_safe, searchs_index_path, class:'btn btn-outline-primary' %>
       </div>
     </div>
   </div>
-
 </div>
