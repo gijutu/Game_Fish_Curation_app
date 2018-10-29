@@ -17,7 +17,7 @@ class GamesController < ApplicationController
       @search = @games.ransack(params[:q])
       @games = @search.result
     end
-    @games = @games.page(params[:page]).per(3)
+    @games = @games.page(params[:page]).per(5)
   end
 
   def show

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searchs/index'
   root 'games#index'
   get 'tops/index'
 

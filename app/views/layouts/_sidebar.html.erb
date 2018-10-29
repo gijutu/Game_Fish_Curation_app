@@ -5,7 +5,8 @@
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v3.2';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+  }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <div class="wrapper">
   <nav id="sidebar">
@@ -17,7 +18,8 @@
     <ul class="list-unstyled components">
       <li><h5><%= link_to '&nbsp;ホーム'.html_safe, tops_index_path %></h5></li>
       <li><h5><%= link_to '&nbsp;大会情報一覧'.html_safe, games_path %></h5></li>
-      <li><h5><%= link_to '&nbsp;大会を開催する'.html_safe, new_game_path %></h5></li>
+      <li><h5><%= link_to '&nbsp;大会を開催'.html_safe, new_game_path %></h5></li>
+      <li><h5><%= link_to '&nbsp;大会を検索'.html_safe, searchs_index_path %></h5></li>
       <li><h5><%= link_to '&nbsp;ボート屋情報'.html_safe, tops_index_path, class:'nav-link disabled' %></h5></li>
     </ul>
     <div class="sns_button">

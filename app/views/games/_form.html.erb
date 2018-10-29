@@ -1,4 +1,6 @@
-<%= form_with(model: game, local: true) do |form| %>
+<div class="container">
+  <%= form_with(model: game, local: true) do |form| %>
+
   <% if game.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
@@ -9,24 +11,59 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :大会名 %><br>
-    <%= form.text_field :title, placeholder: "入力してください"%>
+  <div class="row">
+    <div class="form-group col-md-3">
+      <%= form.label :開催日 %>
+      <%= form.date_select :the_day , class:'form-control'%>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label :開催地域 %>
+      <%= form.collection_select(:area_id, Area.all, :id, :area, class:'form-control') %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :大会概要 %><br>
-    <%= form.text_field :remark, size: "70x10" %>
+  <div class="row">
+    <div class="form-group col-md-3">
+      <%= form.label :大会名【必須】 %><br>
+      <%= form.text_field :title, placeholder: "大会名を入力してください", class:'form-control'%>
+    </div>
+    <div class="form-group col">
+      <%= form.label :大会概要【必須】 %><br>
+      <%= form.text_area :remark, placeholder: "大会概要を入力してください", class:'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :開催地域 %>
-    <%= form.collection_select(:area_id, Area.all, :id, :area, class:'form-control') %>
+  <div class="form-group">
+    <%= form.label :大会レギュレーション＊当日の流れ、大会ルールなど %>
+    <%= form.text_area :content, placeholder: game_text, size: "50x6", class:'form-control'%>
   </div>
 
-  <div class="field">
-    <%= form.label :カテゴリ %><br>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= form.label :開催場所【必須】 %>
+      <%= form.text_field :place, placeholder: "例:霞ヶ浦", class:'form-control'%>
+    </div>
+    <div class="form-group col-md-3">
+      <%= form.label :参加費 %>
+      <%= form.text_field :price, placeholder: "例:1000", class:'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :注意事項 %>
+    <%= form.text_area :note, placeholder: "注意事項を入力してください", size: "50x3", class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :関連ファイルのアップロード %>
+    <div class="custom-file">
+      <%= form.label :画像またはPDF, class:'custom-file-label'%>
+      <%= form.file_field :file, class:'custom-file-input'%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :カテゴリラベルの選択 %><br>
     <% Label.all.each do |label| %>
       <%= form.check_box "label_#{label.id}" %>
       <span class="badge badge-primary"><%= label.game_lebel %></span>
@@ -35,40 +72,10 @@
     <% end %>
   </div>
 
-
-  <div class="field">
-    <%= form.label :大会レギュレーション %><br>
-    <%= form.text_area :content, value: game_text, size: "70x10"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :開催日 %>
-    <%= form.date_select :the_day %>
-  </div>
-
-  <div class="field">
-    <%= form.label :開催場所 %>
-    <%= form.text_field :place, placeholder: "例:霞ヶ浦"%>
-  </div>
-
-  <div class="field">
-    <%= form.label :参加費 %>
-    <%= form.text_field :price, placeholder: "例:1000" %>円
-  </div>
-
-  <div class="field">
-    <%= form.label :注意事項 %><br>
-    <%= form.text_field :note, size: "70x10" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ファイル %><br>
-    <%= form.file_field :file %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "大会情報を投稿する", class:'btn btn-secondary btn-lg'%>
+    <%= link_to '一覧に戻る', games_path, class:'btn btn-light' %>
   </div>
+  <% end %>
 
-
-<% end %>
+</div>

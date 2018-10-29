@@ -1,0 +1,33 @@
+
+<div class="container">
+  <h1>大会を検索する</h1>
+</div>
+
+<%= render 'search_form'%>
+
+<br><br>
+<%= page_entries_info @games %>
+  <div class="container">
+    <% @games.order("created_at DESC").each do |game| %>
+        <div class="card border-secondary">
+          <div class="card-header">
+            <strong><%= "【#{game.the_day}開催】　#{game.title}" %></strong>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <% game.labelings.each do |labeling| %>
+                <span class="badge badge-primary"><%= labeling.label.game_lebel %></span>
+                <span class="badge badge-success"><%= labeling.label.game_size %></span>
+                <span class="badge badge-danger"><%= labeling.label.game_event %></span>
+              <% end %>
+            </h5>
+            <p class="card-text"><%= game.remark %></p>
+            <%= link_to 'Show', game, class:'btn btn-primary' %>
+            <%= link_to 'Edit', edit_game_path(game), class:'btn btn-primary' %>
+            <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-primary' %>
+            <%= "最終更新#{game.updated_at.strftime("%Y-%m-%d%H:%M")}" %>
+          </div>
+        </div><br>
+    <% end %>
+  </div>
+<%= paginate @games %>
