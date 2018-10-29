@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show;end
 
   def edit
+    @labels = Label.all
   end
 
   def update
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :icon, :keep_team_id, :kana_name, :gender, :name)
+    params.require(:user).permit(:email, :icon, :keep_team_id, :kana_name, :gender, :name, :live, :birthday)
   end
 
   def current
