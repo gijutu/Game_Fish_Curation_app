@@ -1,6 +1,10 @@
 <div id="header">
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #44aeea">
-  <a class="navbar-brand" href="#"><%= image_tag 'top_image.png', size: '200x80' %></a>
+  <%= link_to tops_index_path, class: 'navbar-brand' do %>
+    <%= image_tag 'turikara-logo.png', size: '300x300' %>
+    <%= image_tag 'topfish.png', size: '200x200' %>
+  <% end %>
+
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,9 +13,8 @@
     <ul class="navbar-nav ml-auto small">
       <%= form_with(model: @game, local: true, method: :get) do |form| %>
       <%= form.text_field :title, placeholder: '大会名検索...', class: 'form-control'%>
-      <%= form.collection_select(:text, Label.setForm, :text, :text, class:'form-control') %>
       <%= form.hidden_field :find, value: 'hit' %>
-      <%= form.submit "大会検索", name: nil, class:'btn btn-outline-dark' %>
+      <%= form.submit "大会名で検索", name: nil, class:'btn btn-outline-dark' %>
       <% end %>
     </ul>
 

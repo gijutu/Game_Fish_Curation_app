@@ -17,7 +17,7 @@ class GamesController < ApplicationController
       @search = @games.ransack(params[:q])
       @games = @search.result
     end
-    @games = @games.page(params[:page]).per(5)
+    @games = @games.page(params[:page]).per(3)
   end
 
   def show
@@ -81,7 +81,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:title, :content, :created_at, :updated_at, :the_day, :file)
+    params.require(:game).permit(:title, :content, :created_at, :updated_at, :the_day, :file, :remark, :price, :place, :note)
   end
 
   def game_area_id

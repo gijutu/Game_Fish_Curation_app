@@ -1,7 +1,11 @@
 <strong><%= "最終更新 #{@game.updated_at.strftime("%Y-%m-%d%H:%M")}" %></strong>
+
+開催エリア
 <% @game.open_area_areas.each do |area| %>
  <%= area.area %>
  <% end %>
+
+
 <div class="container">
   <% @game.labeling_labels.each do |label| %>
     <span class="badge badge-primary"><%= label.game_lebel %></span>
@@ -18,7 +22,11 @@
   <strong><%= "#{@game.the_day} 開催" %></strong>
   <p><strong>大会名</strong></p>
   <%= @game.title %>
+
   <p><strong>大会概要</strong></p>
+  <%= @game.remark %>
+
+  <p><strong>大会詳細</strong></p>
   <div class="game_text"><%= @game.content %></div>
   <%= image_tag @game.file_url.to_s, size: '40x40' if @game.file.present? unless @game.file.url.try(:include?, ".pdf") %>
   <%= link_to '添付ファイルをダウンロードする', @game.file.url if @game.file.present?%>
@@ -44,16 +52,17 @@
 
 
 <div class="container">
-  <%= link_to 'Edit', edit_game_path(@game) %>
-  <%= link_to 'Back', games_path %>
+  <%= link_to '編集', edit_game_path(@game) %>
+  <%= link_to '戻る', games_path %>
 </div>
 
+<br>
 
+<div class="alert alert-primary" role="alert">
 <p>コメント一覧</p>
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments, game: @game } %>
   </div>
   <%= render partial: 'comments/form', locals: { comment: @comment, game: @game } %>
-  <%= link_to '編集', edit_game_path(@game) %> |
-  <%= link_to '戻る', games_path %>
+</div>
 </div>

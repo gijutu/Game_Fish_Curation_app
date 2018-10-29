@@ -16,6 +16,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :大会概要 %><br>
+    <%= form.text_field :remark, size: "70x10" %>
+  </div>
+
+  <div class="field">
     <%= form.label :開催地域 %>
     <%= form.collection_select(:area_id, Area.all, :id, :area, class:'form-control') %>
   </div>
@@ -49,11 +54,6 @@
   <div class="field">
     <%= form.label :参加費 %>
     <%= form.text_field :price, placeholder: "例:1000" %>円
-  </div>
-
-  <div class="field">
-    <%= form.label :備考 %><br>
-    <%= form.text_field :remark, size: "70x10" %>
   </div>
 
   <div class="field">
