@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'searchs/index'
   root 'games#index'
   get 'tops/index'
 
@@ -7,6 +8,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[show index edit update]
 
   resources :games
+
+  resources :games do
+    resources :comments
+  end
 
   resources :favorites, only: [:create, :destroy]
   resources :entries, only: [:create, :destroy]

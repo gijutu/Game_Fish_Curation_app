@@ -1,28 +1,62 @@
+<h1>大会詳細</h1>
 <strong><%= "最終更新 #{@game.updated_at.strftime("%Y-%m-%d%H:%M")}" %></strong>
+
+
 <div class="container">
   <% @game.labeling_labels.each do |label| %>
     <span class="badge badge-primary"><%= label.game_lebel %></span>
     <span class="badge badge-success"><%= label.game_size %></span>
     <span class="badge badge-danger"><%= label.game_event %></span>
   <% end %>
+</div><br>
+
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">日時/開催エリア</div>
+    <div class="card-body">
+      <%= "#{@game.the_day} 開催" %><br>
+      <% @game.open_area_areas.each do |area| %>
+        <%= area.area %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card card-primary">
+    <div class="card-header">大会名/概要</div>
+    <div class="card-body">
+      <%= @game.title %><br>
+      <%= @game.remark %>
+    </div>
+  </div>
+
+  <div class="card card-primary">
+    <div class="card-header">大会詳細</div>
+    <div class="card-body"><%= @game.content %></div>
+  </div>
+
+  <div class="card card-primary">
+    <div class="card-header">場所/参加費</div>
+    <div class="card-body">
+      <%= @game.place %><br>
+      <%= @game.price %>
+    </div>
+  </div>
+
+  <div class="card card-primary">
+    <div class="card-header">注意事項</div>
+    <div class="card-body">
+      <%= @game.note %>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-
-</div>
-
-<div class="container">
-  <strong><%= "#{@game.the_day} 開催" %></strong>
-  <p><strong>大会名</strong></p>
-  <%= @game.title %>
-  <p><strong>大会概要</strong></p>
-  <div class="game_text"><%= @game.content %></div>
-  <%= image_tag @game.file_url.to_s, size: '40x40' if @game.file.present? unless @game.file.url.include?(".pdf") %>
-  <%=  %>
+  <%= image_tag @game.file_url.to_s, size: '40x40' if @game.file.present? unless @game.file.url.try(:include?, ".pdf") %>
   <%= link_to '添付ファイルをダウンロードする', @game.file.url if @game.file.present?%>
 </div>
 
-<div class="container">
+<div class="fv_en_click">
   <% unless @game.user_id == current_user.id %>
     <% if @favorite.present? %>
       <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-primary' %>
@@ -40,9 +74,20 @@
   <% end %>
 </div>
 
-  <%= "#{@favorites}人がお気に入り。"%>
+
+<div class="actions">
+  <%= link_to '編集', edit_game_path(@game), class: 'btn btn-light btn-sm' %>
+  <%= link_to '戻る', games_path, class: 'btn btn-light btn-sm' %>
+</div>
+
+<br>
 
 <div class="container">
-  <%= link_to 'Edit', edit_game_path(@game) %>
-  <%= link_to 'Back', games_path %>
+  <div class="alert alert-primary" role="alert">
+    <h4>コメント一覧</h4>
+    <div id="comments_area">
+      <%= render partial: 'comments/index', locals: { comments: @comments, game: @game } %>
+      <%= render partial: 'comments/form', locals: { comment: @comment, game: @game } %>
+    </div>
+  </div>
 </div>

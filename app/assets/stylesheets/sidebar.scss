@@ -9,9 +9,16 @@
     background: #33476a;
 }
 
+#sidebar h1 {
+    color: white;
+}
+
+#sidebar a{
+    text-decoration: none;
+}
+
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #33476a;
 }
 
 #sidebar ul p {
@@ -21,20 +28,17 @@
 }
 
 #sidebar ul li a {
-    padding: 10px;
+    padding: 25px;
     font-size: 1.1em;
     display: block;
     color:white;
+    border-bottom: 1px solid white;
 }
 
 #sidebar ul li a:hover {
-    color: black;
+    color: #33476a;
 }
 
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #0080c9;
-}
 
 .wrapper {
     display: flex;
@@ -44,7 +48,7 @@
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    min-height: 100vh;
+    min-height: 200vh;
 }
 
 #sidebar.active {
@@ -69,4 +73,9 @@ a[data-toggle="collapse"] {
     #sidebar.active {
         margin-left: 0;
     }
+}
+
+.sns_button{
+    padding-top: 10%;
+    text-align: center;
 }

@@ -8,7 +8,7 @@
   Label.create!(game_lebel: 'エンジョイ')
   Label.create!(game_lebel: 'オープン')
   Label.create!(game_lebel: 'ガチ')
-  Label.create!(game_lebel: 'メーカー限定')
+  Label.create!(game_lebel: 'メーカールアー限定')
 
   Label.create!(game_size: '小規模：２０人未満程度')
   Label.create!(game_size: '中規模：２０〜５０人程度')

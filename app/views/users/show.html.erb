@@ -1,14 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag (@user.icon.url), size: '40x40' if @user.icon.present? %>
-</p>
+<div class="container">
+  <div class="card border-primary">
+    <div class="card-header text-white bg-primary border-primary"><h2>マイページ</h2></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          名前：<%= @user.name %><br><br>
+          かな：<%= @user.kana_name %>
+        </div>
+        <div class="col-md-3">
+          <%= image_tag (@user.icon.url), size: '100x100' if @user.icon.present? %>
+        </div>
+      </div>
+        性別：<%= @user.gender %><br><br>
+        アドレス：<%= @user.email %>
+    </div>
+  </div>
+</div>
 
-<p>名前：<%= @user.name %></p>
-<p>かな：<%= @user.kana_name %></p>
-<p>性別：<%= @user.gender %></p>
-<p>アドレス：<%= @user.email %></p>
-<p>お気に<%= @user.favorites.all %></p>
+<br>
 
-<%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-success btn-block mt-3' %>
+<div class="container">
+  <div class="alert alert-primary" role="alert">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card card-body">
+          <h3 class="card-title">お気に入り一覧</h3>
+          <% current_user.favorite_games.each do |game| %>
+            <p class="card-text"><%= game.title %></p>
+            <%= link_to '大会詳細', game_path(game), class: 'btn btn-primary btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card card-body">
+          <h3 class="card-title">エントリー一覧</h3>
+          <% current_user.entry_games.each do |game| %>
+            <p class="card-text"><%= game.title %></p>
+            <%= link_to '大会詳細', game_path(game), class: 'btn btn-primary btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="actions">
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to 'プロフィールを編集', edit_user_path(@user), class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>

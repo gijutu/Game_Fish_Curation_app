@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
+  before_action :current, only: [:show, :edit, :update]
   def index
     @users = User.all
   end
 
-  def show
-    @user = current_user
-  end
+  def show;end
 
   def edit
-    @user = current_user
   end
 
   def update
-    @user = current_user
     if @user.update(user_params)
       redirect_to user_path, notice: 'プロフィールを編集しました！'
     else
@@ -26,4 +23,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :icon, :keep_team_id, :kana_name, :gender, :name)
   end
 
+  def current
+    @user = current_user
+  end
 end
