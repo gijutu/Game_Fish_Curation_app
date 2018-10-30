@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+  
+
   Label.create!(game_lebel: 'エンジョイ')
   Label.create!(game_lebel: 'オープン')
   Label.create!(game_lebel: 'ガチ')
@@ -16,7 +18,6 @@
 
   Label.create!(game_event: 'おかっぱり')
   Label.create!(game_event: 'ボート')
-
 
   Area.create!(area: '北海道')
   Area.create!(area: '青森県')

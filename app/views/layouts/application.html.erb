@@ -12,15 +12,16 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <article class="content">
       <div class="row">
         <div class="col-sm-3 hidden-xs">
-            <%= render 'layouts/sidebar' %>
+          <%= render 'layouts/sidebar' %>
         </div>
         <div class="col-sm-9 col-xs-10">
           <%= yield %>
         </div>
       </div>
-
+    </article>
       <%= render 'layouts/footer' %>
   </body>
 </html>
