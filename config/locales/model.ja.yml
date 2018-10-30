@@ -9,7 +9,7 @@ ja:
       messages:
         taken: "はすでに存在します。"
         record_invalid: "バリデーションに失敗しました。 %{errors}"
-      
+
     models:
       game: "大会"
       user: "ユーザー"
@@ -30,3 +30,6 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      label:
+        name: "ラベル名"
+        default: "デフォルト判定"
