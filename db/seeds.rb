@@ -65,15 +65,3 @@
   Area.create!(area: '鹿児島県')
   Area.create!(area: '沖縄県')
   Area.create!(area: 'その他地域')
-
-
-  5.times do |n|
-  name = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!(name: name,
-               email: email,
-               password: password,
-               password_confirmation: password
-               )
-end
