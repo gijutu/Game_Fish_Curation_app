@@ -1,19 +1,15 @@
-<%= search_form_for @q, html: {method: :get} do |f| %>
-  <div class="form-group">
-    <%= f.label :開催日 %><br>
-    <%= f.date_select :the_day_cont , class:'form-control', prompt: '選択'%>
-  </div>
+<%= search_form_for (@q) do |f| %>
   <div class="form-group">
     <%= f.label :大会名 %><br>
     <%= f.text_field :title_cont, placeholder: '大会名検索...', class: 'form-control'%>
   </div>
   <div class="form-group">
     <%= f.label :カテゴリ %><br>
-    <%= f.select :title_or_labelings_label_game_lebel, ([['エンジョイ','エンジョイ' ], ['オープン','オープン'], ['ガチ','ガチ'], ['メーカールアー限定','メーカールアー限定']]), prompt: '選択してください', class:'form-control' %>
-    <%= f.select :title_or_labelings_label_game_lebel_or_labelings_label_game_size, ([['小規模：２０人未満程度','小規模：２０人未満程度' ], ['中規模：２０〜５０人程度','中規模：２０〜５０人程度'], ['大規模：５０人以上','大規模：５０人以上']]), prompt: '選択してください', class:'form-control' %>
-    <%= f.select :title_or_labelings_label_game_lebel_or_labelings_label_game_size_or_labelings_label_game_event, ([['おかっぱり','おかっぱり' ], ['ボート','ボート']]), prompt: '選択してください', class:'form-control' %>
+    <%= f.select :labeling_labels_game_lebel_cont, ([['エンジョイ','エンジョイ' ], ['オープン','オープン'], ['ガチ','ガチ'], ['メーカールアー限定','メーカールアー限定']]), prompt: '選択してください', class:'form-control' %>
+    <%= f.select :labeling_labels_game_size_cont, ([['小規模：２０人未満程度','小規模：２０人未満程度' ], ['中規模：２０〜５０人程度','中規模：２０〜５０人程度'], ['大規模：５０人以上','大規模：５０人以上']]), prompt: '選択してください', class:'form-control' %>
+    <%= f.select :labeling_labels_game_event_cont, ([['おかっぱり','おかっぱり' ], ['ボート','ボート']]), prompt: '選択してください', class:'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.submit%>
+    <%= f.submit '検索する', class: 'btn btn-light'%>
   </div>
 <% end %>
