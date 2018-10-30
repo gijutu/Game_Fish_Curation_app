@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @games = Game.includes(:labelings)
@@ -21,8 +22,10 @@ class GamesController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(game_id: @game.id)
-    @entry = current_user.entries.find_by(game_id: @game.id)
+    if current_user.present?
+      @favorite = current_user.favorites.find_by(game_id: @game.id)
+      @entry = current_user.entries.find_by(game_id: @game.id)
+    end
     @comments = @game.comments
     @comment = @game.comments.build
     @labels = Label.all
@@ -81,10 +84,19 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:title, :content, :created_at, :updated_at, :the_day, :file, :remark, :price, :place, :note)
+    params.require(:game).permit(:title, :content, :created_at, :updated_at, :the_day, :file, :remark, :price, :place, :note, :user_id)
   end
 
   def game_area_id
     params.require(:game).permit(:area_id)[:area_id].to_i
   end
+
+  def correct_user
+    @game = Game.find(params[:id])
+    user = @game.user_id
+    unless current_user.id = user
+      redirect_to root_path
+    end
+  end
+  
 end
