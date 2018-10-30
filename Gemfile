@@ -5,8 +5,9 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'coffee-rails', '~> 4.2'
+gem 'cancancan', '~> 1.10'
 gem 'carrierwave'
+gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari', '~> 0.17.0'
@@ -14,10 +15,13 @@ gem 'mini_magick'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'ransack'
+gem 'rails_admin', '1.4.0'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker', '~> 3.5'
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
