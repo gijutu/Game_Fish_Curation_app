@@ -84,7 +84,7 @@
 <div class="container">
   <div class="alert alert-primary" role="alert">
     <h4>コメント一覧</h4>
-    <div id="comments_area">
+    <div>
       <%= render partial: 'comments/index', locals: { comments: @comments, game: @game } %>
       <%= render partial: 'comments/form', locals: { comment: @comment, game: @game } %>
     </div>
