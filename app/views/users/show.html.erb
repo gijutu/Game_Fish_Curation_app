@@ -11,7 +11,7 @@
             性別：<%= @user.gender %><br><br>
             アドレス：<%= @user.email %><br><br>
             生年月日：<%= @user.birthday %><br><br>
-            居住地域：<%= Area.find_by(id: @user.live).area %>
+            居住地域：<%= Area.find_by(id: @user.live).area if @user.live.present? %>
           </div>
           <div class="col-md-3">
             <%= image_tag (@user.icon.url), size: '250x250' if @user.icon.present? %>
