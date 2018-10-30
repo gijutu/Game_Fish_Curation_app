@@ -8,7 +8,8 @@
   <% @games.order("created_at DESC").each do |game| %>
       <div class="card border-secondary">
         <div class="card-header">
-          <strong><%= "【#{game.the_day}開催】　#{game.title}" %></strong>
+          <strong><%= "【#{game.the_day}開催】" %></strong>
+          <h3><%= "#{game.title}"%></h3>
         </div>
         <div class="card-body">
           <h5 class="card-title">
@@ -18,11 +19,13 @@
               <span class="badge badge-danger"><%= labeling.label.game_event %></span>
             <% end %>
           </h5>
-          <p class="card-text"><%= game.remark %></p>
-          <%= link_to 'Show', game, class:'btn btn-primary' %>
-          <%= link_to 'Edit', edit_game_path(game), class:'btn btn-primary' %>
-          <%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-primary' %>
+          <h4 class="card-text"><%= game.remark %></h4><br>
+          <%= link_to '詳細', game, class:'btn btn-outline-primary btn-block' %>
           <%= "最終更新#{game.updated_at.strftime("%Y-%m-%d%H:%M")}" %>
+          <div class="right-btn">
+            <%= link_to '編集', edit_game_path(game), class:'btn btn-dark btn-sm' %>
+            <%= link_to '削除', game, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-dark btn-sm' %>
+          </div>
         </div>
       </div><br>
   <% end %>

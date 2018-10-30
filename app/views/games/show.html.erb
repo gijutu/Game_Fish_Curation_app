@@ -1,7 +1,6 @@
 <h1>大会詳細</h1>
 <strong><%= "最終更新 #{@game.updated_at.strftime("%Y-%m-%d%H:%M")}" %></strong>
 
-
 <div class="container">
   <% @game.labeling_labels.each do |label| %>
     <span class="badge badge-primary"><%= label.game_lebel %></span>
@@ -11,43 +10,60 @@
 </div><br>
 
 <div class="container">
-  <div class="card">
-    <div class="card-header">日時/開催エリア</div>
-    <div class="card-body">
-      <%= "#{@game.the_day} 開催" %><br>
-      <% @game.open_area_areas.each do |area| %>
-        <%= area.area %>
-      <% end %>
+  <div class="game-show">
+    <div class="card">
+      <h3 class="card-header">日時/開催エリア</h3>
+      <h4 class="card-body">
+        <%= "#{@game.the_day} 開催" %>
+      </h4>
+      <h4 class="card-body">
+        <% @game.open_area_areas.each do |area| %>
+          <%= area.area %>
+        <% end %>
+      </h4>
     </div>
   </div>
 
-  <div class="card card-primary">
-    <div class="card-header">大会名/概要</div>
-    <div class="card-body">
-      <%= @game.title %><br>
-      <%= @game.remark %>
+  <div class="game-show">
+    <div class="card card-primary">
+      <h3 class="card-header">大会名/概要</h3>
+      <h4 class="card-body">
+        <%= @game.title %>
+      </h4>
+      <h4 class="card-body">
+        <%= @game.remark %>
+      </h4>
     </div>
   </div>
 
-  <div class="card card-primary">
-    <div class="card-header">大会詳細</div>
-    <div class="card-body"><%= @game.content %></div>
-  </div>
-
-  <div class="card card-primary">
-    <div class="card-header">場所/参加費</div>
-    <div class="card-body">
-      <%= @game.place %><br>
-      <%= @game.price %>
+  <div class="game-show">
+    <div class="card card-primary">
+      <h3 class="card-header">大会詳細</h3>
+      <div class="card-body"><%= @game.content %></div>
     </div>
   </div>
 
-  <div class="card card-primary">
-    <div class="card-header">注意事項</div>
-    <div class="card-body">
-      <%= @game.note %>
+  <div class="game-show">
+    <div class="card card-primary">
+      <h3 class="card-header">場所/参加費</h3>
+      <h4 class="card-body">
+        <%= @game.place %>
+      </h4>
+      <h4 class="card-body">
+        <%= @game.price %>
+      </h4>
     </div>
   </div>
+
+  <div class="game-show">
+    <div class="card card-primary">
+      <h3 class="card-header">注意事項</h3>
+      <div class="card-body">
+        <%= @game.note %>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="container">

@@ -1,11 +1,19 @@
 #sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+padding: 1px 0 0;
     background: #44aeea;
     color: white;
     transition: all 0.3s;
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
+    padding:  29px;
     background: #33476a;
 }
 
@@ -39,33 +47,12 @@
     color: #33476a;
 }
 
-
-.wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
-}
 #sidebar {
     min-width: 250px;
-    max-width: 250px;
+
     min-height: 200vh;
 }
 
-#sidebar.active {
-    margin-left: -250px;
-}
-
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;

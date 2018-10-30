@@ -22,7 +22,7 @@
         <div class="card-body px-2 py-3">
           <h3 class="card-title"><%= @games.last.title %></h3>
           <p class="card-text"><%= @games.last.remark %></p>
-          <p class="mb-0"><%= link_to '&nbsp;詳細'.html_safe, game_path(@games.last), class:'btn btn-primary btn-sm' %></p>
+          <p class="mb-0"><%= link_to '&nbsp;詳細'.html_safe, game_path(@games.last), class:'btn btn-outline-info btn-block' %></p>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
         <div class="card-body px-2 py-3">
           <h3 class="card-title"><%= @games.first.title %></h3>
           <p class="card-text"><%= @games.first.remark %></p>
-          <p class="mb-0"><%= link_to '&nbsp;詳細'.html_safe, game_path(@games.first), class:'btn btn-primary btn-sm' %></p>
+          <p class="mb-0"><%= link_to '&nbsp;詳細'.html_safe, game_path(@games.first), class:'btn btn-outline-info btn-block' %></p>
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@
       <div class="card-body">
         <h3 class="card-title">大会情報一覧をみる</h3>
         <p class="card-text">釣りカラは全国の大会情報を一覧で見ることができます。ユーザー登録をして好きな大会にエントリー、興味のある大会はお気に入りに追加しよう。</p>
-        <%= link_to '&nbsp;大会情報一覧'.html_safe, games_path, class:'btn btn-outline-primary' %>
+        <%= link_to '&nbsp;大会情報一覧'.html_safe, games_path, class:'btn btn-outline-primary btn-block' %>
       </div>
     </div>
 
@@ -58,7 +58,7 @@
       <div class="card-body">
         <h3 class="card-title">大会を開催する</h3>
         <p class="card-text">釣りカラは仲間を集めて、釣りの大会を開催することができます。仲間内でも知らない人とでも一緒に大会を楽しもう。</p>
-        <%= link_to '&nbsp;大会を開催'.html_safe, new_game_path, class:'btn btn-outline-primary' %>
+        <%= link_to '&nbsp;大会を開催'.html_safe, new_game_path, class:'btn btn-outline-primary btn-block' %>
       </div>
     </div>
 
@@ -66,8 +66,8 @@
       <%= link_to (image_tag 'search-logo.png', size: '300x300'), searchs_index_path, class:'card-img-top' %>
       <div class="card-body">
         <h3 class="card-title">大会を検索する</h3>
-        <p class="card-text">釣りカラはあなたとマッチした大会を探すことができます。条件を指定して大会を探そう。</p>
-        <%= link_to '&nbsp;大会を検索'.html_safe, searchs_index_path, class:'btn btn-outline-primary' %>
+        <p class="card-text">釣りカラは、あなたとマッチした大会を探すことができます。カテゴリや大会名などの条件を指定して、こだわりの大会をみつけよう。</p>
+        <%= link_to '&nbsp;大会を検索'.html_safe, searchs_index_path, class:'btn btn-outline-primary btn-block' %>
       </div>
     </div>
   </div>

@@ -5,6 +5,41 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+  50.times do |n|
+    title = Faker::WorldCup.stadium
+    content = Faker::Football.competition
+    remark = Faker::Movie.quote
+    user_id = 1
+    the_day = Faker::Time.between(2.days.ago, Date.today, :all)
+
+    Game.create(
+      title: title,
+      content: content,
+      remark: remark,
+      user_id: user_id,
+      the_day: the_day
+    )
+  end
+
+  User.create!(name: "Example User",
+               email: "example@railstutorial.org",
+               password:              "foobar",
+               password_confirmation: "foobar",
+               admin: true)
+
+  20.times do |n|
+    name = Faker::Name.name
+    email = "example-#{n+1}@railstutorial.org"
+    password = "password"
+    User.create!(name: name,
+                 email: email,
+                 password: password,
+                 password_confirmation: password
+                 )
+  end
+
+
   Label.create!(game_lebel: 'エンジョイ')
   Label.create!(game_lebel: 'オープン')
   Label.create!(game_lebel: 'ガチ')
@@ -16,7 +51,6 @@
 
   Label.create!(game_event: 'おかっぱり')
   Label.create!(game_event: 'ボート')
-
 
   Area.create!(area: '北海道')
   Area.create!(area: '青森県')
