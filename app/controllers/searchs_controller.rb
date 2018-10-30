@@ -1,6 +1,6 @@
 class SearchsController < ApplicationController
   def index
-    @q = Game.ransack(params[:q])
+    @q = Game.includes(:labeling_labels).ransack(params[:q])
     @games = @q.result(distinct: true).page(params[:page]).per(3)
   end
 

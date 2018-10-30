@@ -1,10 +1,9 @@
-
 <h1>大会情報</h1>
 <%= sort_link(@search,:the_day,'大会開催日') %>
 <%= sort_link(@search,:created_at,'投稿日') %>
 <%= sort_link(@search,:updated_at,'最終更新') %>
-<%= page_entries_info @games %>
 
+<%= page_entries_info @games %>
 <div class="container">
   <% @games.order("created_at DESC").each do |game| %>
       <div class="card border-secondary">
