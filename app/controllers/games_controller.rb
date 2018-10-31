@@ -9,7 +9,6 @@ class GamesController < ApplicationController
       params.delete(:find)
       @games = @games.search(params[:title])
       @search = @games.ransack(params[:q])
-      # ラベル検索をしたい　できてない
     elsif params['find'] == 'hit'|| params[:text].present?
       @q = Game.ransack(params[:q])
       @labels = Label.all
@@ -94,9 +93,9 @@ class GamesController < ApplicationController
   def correct_user
     @game = Game.find(params[:id])
     user = @game.user_id
-    unless current_user.id = user
+    unless current_user.id == user
       redirect_to root_path
     end
   end
-  
+
 end

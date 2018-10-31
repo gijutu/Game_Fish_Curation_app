@@ -71,6 +71,7 @@
   Area.create!(area: '石川県')
   Area.create!(area: '福井県')
   Area.create!(area: '山梨県')
+  Area.create!(area: '長野県')
   Area.create!(area: '岐阜県')
   Area.create!(area: '静岡県')
   Area.create!(area: '愛知県')
