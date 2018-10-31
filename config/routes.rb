@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root 'games#index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'searchs/index'
-  root 'games#index'
   get 'tops/index'
 
   devise_for :users
