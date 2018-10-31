@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
   root 'games#index'
-  mount RailsAdmin::Engine, at:'/admin', as: 'rails_admin'
   get 'searchs/index'
   get 'tops/index'
+  mount RailsAdmin::Engine, at:'/admin', as: 'rails_admin'
 
   devise_for :users
 
   resources :users, only: %i[show index edit update]
-
-  resources :games
 
   resources :games do
     resources :comments
