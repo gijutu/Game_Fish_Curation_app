@@ -39,7 +39,6 @@
                  )
   end
 
-
   Label.create!(game_lebel: 'エンジョイ')
   Label.create!(game_lebel: 'オープン')
   Label.create!(game_lebel: 'ガチ')

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'games#index'
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine, at:'/admin', as: 'rails_admin'
   get 'searchs/index'
   get 'tops/index'
 
