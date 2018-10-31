@@ -13,9 +13,7 @@
   <div class="game-show">
     <div class="card">
       <h3 class="card-header">日時/開催エリア</h3>
-      <h4 class="card-body">
-        <%= "#{@game.the_day} 開催" %>
-      </h4>
+      <h4 class="card-body"><%= "#{@game.the_day} 開催" %></h4>
       <h4 class="card-body">
         <% @game.open_area_areas.each do |area| %>
           <%= area.area %>
@@ -27,12 +25,8 @@
   <div class="game-show">
     <div class="card card-primary">
       <h3 class="card-header">大会名/概要</h3>
-      <h4 class="card-body">
-        <%= @game.title %>
-      </h4>
-      <h4 class="card-body">
-        <%= @game.remark %>
-      </h4>
+      <h4 class="card-body"><%= @game.title %></h4>
+      <h4 class="card-body"><%= @game.remark %></h4>
     </div>
   </div>
 
@@ -46,29 +40,22 @@
   <div class="game-show">
     <div class="card card-primary">
       <h3 class="card-header">場所/参加費</h3>
-      <h4 class="card-body">
-        <%= @game.place %>
-      </h4>
-      <h4 class="card-body">
-        <%= @game.price %>
-      </h4>
+      <h4 class="card-body"><%= @game.place %></h4>
+      <h4 class="card-body"><%= "#{@game.price}円" %></h4>
     </div>
   </div>
 
   <div class="game-show">
     <div class="card card-primary">
       <h3 class="card-header">注意事項</h3>
-      <div class="card-body">
-        <%= @game.note %>
-      </div>
+      <div class="card-body"><%= @game.note %></div>
     </div>
   </div>
-
 </div>
 
 <div class="container">
-  <%= image_tag @game.file_url.to_s, size: '40x40' if @game.file.present? unless @game.file.url.try(:include?, ".pdf") %>
-  <%= link_to '添付ファイルをダウンロードする', @game.file.url if @game.file.present?%>
+  <%= image_tag @game.file_url.to_s, size: '250x250' if @game.file.present? unless @game.file.url.try(:include?, ".pdf") %>
+  <%= link_to '添付ファイルをダウンロードする', @game.file.url, class: 'btn btn-primary btn-sm' if @game.file.present? %>
 </div>
 
 <div class="fv_en_click">
@@ -91,8 +78,10 @@
 
 
 <div class="actions">
-  <%= link_to '編集', edit_game_path(@game), class: 'btn btn-light btn-sm' %>
-  <%= link_to '戻る', games_path, class: 'btn btn-light btn-sm' %>
+  <% if @game.user_id == current_user.id %>
+    <%= link_to '編集', edit_game_path(@game), class: 'btn btn-light btn-sm' %>
+    <%= link_to '戻る', games_path, class: 'btn btn-light btn-sm' %>
+  <% end %>
 </div>
 
 <br>

@@ -7,10 +7,7 @@
     }
 }
 
-html:before,
-html:after,
-body:before,
-body:after {
+html:before,html:after,body:before,body:after {
   content: "";
   background: #33476a;
   position: fixed;

@@ -55,12 +55,6 @@ class GamesController < ApplicationController
   end
 
   def update
-    # :gameのパラメータを取得する。
-    # :gameのパラメータの中から、キーに"label"が含まれるハッシュを配列でとり出す。
-    # その中からチェックがついているものつまり、値が"1"のハッシュを配列で取り出す。
-    # keysメソッドでハッシュのキーを配列として返す。
-    # mapメソッドで文字列の数字の部分を数値として配列にし、sample変数に入れる。
-    # @game.labelingsから:label_idカラムの配列を取得、sample変数と重複した値を探し、重複した値があれば編集画面に返す
     sample = params[:game].select { |key, value| key.include?("label") }.select{ |key, value| value == "1" }.keys.map{ |i| i[-1].to_i }
     if (@game.labelings.pluck(:label_id) & sample).blank? && @game.update(game_params)
       Label.where(id: sample).each do |label|
@@ -78,6 +72,7 @@ class GamesController < ApplicationController
   end
 
   private
+
   def set_game
     @game = Game.find(params[:id])
   end
@@ -97,5 +92,4 @@ class GamesController < ApplicationController
       redirect_to root_path
     end
   end
-
 end
