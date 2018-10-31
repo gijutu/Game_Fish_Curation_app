@@ -41,7 +41,7 @@
     <div class="card card-primary">
       <h3 class="card-header">場所/参加費</h3>
       <h4 class="card-body"><%= @game.place %></h4>
-      <h4 class="card-body"><%= "#{@game.price}円" %></h4>
+      <h4 class="card-body"><%= "#{@game.price.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse}円" %></h4>
     </div>
   </div>
 
