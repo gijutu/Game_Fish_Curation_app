@@ -23,7 +23,7 @@
         <%= link_to '詳細', game, class:'btn btn-outline-primary btn-block' %>
         <%= "最終更新#{game.updated_at.strftime("%Y-%m-%d%H:%M")}" %>
         <div class="right-btn">
-          <% if game.user_id == current_user.id %>
+          <% if game.user_id == current_user&.id %>
             <%= link_to '編集', edit_game_path(game), class:'btn btn-dark btn-sm' %>
             <%= link_to '削除', game, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-dark btn-sm' %>
           <% end %>
